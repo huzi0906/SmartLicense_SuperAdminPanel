@@ -9,21 +9,18 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    app.UseHsts();  // The default HSTS value is 30 days. You may want to change this for production scenarios.
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();  // Ensure static files are served, assuming you use this for CSS, images, etc.
+
 app.UseRouting();
+app.UseAuthorization();  // Make sure authorization middleware is configured, even if not yet utilized.
 
-app.UseAuthorization();
-
-app.MapStaticAssets();
-
+// Update default route to point to the Login action
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
-
+    pattern: "{controller=Home}/{action=Login}/{id?}");
 
 app.Run();
