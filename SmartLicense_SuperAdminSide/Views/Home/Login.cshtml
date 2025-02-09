@@ -1,5 +1,5 @@
 @{
-    Layout = null; // You can change this if you have a custom layout page.
+    Layout = null; // No layout for the login page.
 }
 
 <!DOCTYPE html>
@@ -14,46 +14,72 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column; /* Align items vertically */
             height: 100vh;
             margin: 0;
         }
         .login-container {
             background-color: white;
-            padding: 20px;
+            padding: 40px; /* Increased padding for a larger white div */
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px; /* Adjust width as needed */
+            margin-top: 20px; /* Space between logo and form */
         }
         .login-form {
             display: flex;
             flex-direction: column;
         }
+        .login-form label {
+            font-size: 0.9em; /* Smaller font size for labels */
+            margin-bottom: 5px; /* Space above inputs */
+        }
         .login-form input {
             padding: 10px;
-            margin: 10px 0;
+            margin-bottom: 15px; /* Increased margin for better spacing */
         }
-        .login-form button {
+        .login-button {
             background-color: #007BFF;
             color: white;
-            padding: 10px;
+            padding: 10px 20px; /* Adjusted padding */
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            width: auto; /* Auto width for button alignment */
         }
         .forgot-password {
             text-align: right;
             font-size: 0.9em;
+            color: blue; /* Blue color for the text */
+            text-decoration: none; /* No underline */
+            margin-top: 10px; /* Align with the login button */
+        }
+        .action-row {
+            display: flex;
+            justify-content: space-between; /* Space between login button and forgot password */
+            align-items: center; /* Center items vertically */
+        }
+        img.logo {
+            display: block;
+            margin-bottom: 10px; /* Space below the logo */
+            width: 230px; /* Adjust the logo size as needed */
         }
     </style>
 </head>
 <body>
+    <img src="~/images/logo.png" alt="Smart License Logo" class="logo">
     <div class="login-container">
-        <h2>Super Admin Login</h2>
+        <h2 style="font-size: 1.2em; text-align: center;">Super Admin Login</h2>
         <form class="login-form" action="" method="post">
-            <input type="text" name="username" placeholder="Enter your username" required>
-            <input type="password" name="password" placeholder="Enter your password" required>
-            <button type="submit">Login</button>
-            <div class="forgot-password">
-                <a href="#">Forgot Password?</a>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <div class="action-row">
+                <button type="submit" class="login-button">Login</button>
+                <a href="#" class="forgot-password">Forgot Password?</a>
             </div>
         </form>
     </div>
