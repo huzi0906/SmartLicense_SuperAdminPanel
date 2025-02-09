@@ -2,41 +2,49 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Add Admin</h2>
-<div style="display: flex; justify-content: flex-end; margin-bottom: 20px;">
-    <button style="padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px;">Add</button>
+<div style="padding: 0; background-color: #f4f4f4; height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <div style="background-color: white; padding: 40px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1); width: 90%; max-width: 800px;">
+        <h2 style="color: #333; margin-top: 0;">Add Admin</h2>
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 20px;">
+            <button style="padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px;">Add</button>
+        </div>
+        <form>
+            <div style="display: flex; flex-wrap: wrap; margin-bottom: 20px;">
+                <div style="flex: 1 1 48%; margin-right: 2%; margin-bottom: 10px;">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" placeholder="Jane" style="width: 90%; padding: 8px; border-radius: 5px; border: 1px solid #ccc;" />
+                </div>
+                <div style="flex: 1 1 48%; margin-bottom: 10px;">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Doe" style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc;" />
+                </div>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label for="cnic">CNIC</label>
+                <input type="text" id="cnic" name="cnic" placeholder="CNIC Number" style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc;" />
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email" style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc;" />
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc;" />
+            </div>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+                <div style="flex: 1 1 30%; margin-right: 1%; min-width: 100px;">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" placeholder="Albuquerque" style="width: 50%; padding: 8px; border-radius: 5px; border: 1px solid #ccc;" />
+                </div>
+                <div style="flex: 1 1 30%; margin-right: 1%; min-width: 100px;">
+                    <label for="state">State</label>
+                    <input type="text" id="state" name="state" placeholder="State" style="width: 50%; padding: 8px; border-radius: 5px; border: 1px solid #ccc;" />
+                </div>
+                <div style="flex: 1 1 30%; min-width: 100px;">
+                    <label for="zip">ZIP</label>
+                    <input type="text" id="zip" name="zip" placeholder="ZIP Code" style="width: 50%; padding: 8px; border-radius: 5px; border: 1px solid #ccc;" />
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
-<form>
-    <div style="margin-bottom: 10px;">
-        <label for="firstName">First Name</label>
-        <input type="text" id="firstName" name="firstName" placeholder="Jane" />
-    </div>
-    <div style="margin-bottom: 10px;">
-        <label for="lastName">Last Name</label>
-        <input type="text" id="lastName" name="lastName" placeholder="Doe" />
-    </div>
-    <div style="margin-bottom: 10px;">
-        <label for="cnic">CNIC</label>
-        <input type="text" id="cnic" name="cnic" placeholder="CNIC Number" />
-    </div>
-    <div style="margin-bottom: 10px;">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Email" />
-    </div>
-    <div style="margin-bottom: 10px;">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Password" />
-    </div>
-    <div style="margin-bottom: 10px;">
-        <label for="city">City</label>
-        <input type="text" id="city" name="city" placeholder="Albuquerque" />
-    </div>
-    <div style="margin-bottom: 10px;">
-        <label for="state">State</label>
-        <input type="text" id="state" name="state" placeholder="State" />
-    </div>
-    <div style="margin-bottom: 10px;">
-        <label for="zip">ZIP</label>
-        <input type="text" id="zip" name="zip" placeholder="ZIP Code" />
-    </div>
-</form>
