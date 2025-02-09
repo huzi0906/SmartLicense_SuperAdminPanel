@@ -3,10 +3,44 @@
 }
 
 <h2>Dashboard</h2>
-<div>
-    <input type="text" placeholder="Search..." />
-    <button>Search</button>
+<div style="margin-bottom: 20px;">
+    <input type="text" placeholder="Search..." style="padding: 8px; width: 200px; border-radius: 5px; border: 1px solid #ccc;"/>
+    <button style="padding: 8px 15px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">Search</button>
 </div>
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .action-button {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .disable-button {
+        background-color: #ff4d4d; /* Red */
+        color: white;
+    }
+    .enable-button {
+        background-color: #4CAF50; /* Green */
+        color: white;
+    }
+    .disabled-row {
+        background-color: #ffcccc; /* Light red */
+    }
+    .enabled-row {
+        background-color: #ccffcc; /* Light green */
+    }
+</style>
 
 <table>
     <thead>
@@ -22,22 +56,33 @@
             <td>38455-9876345-3</td>
             <td>Muhammad Huzaifa</td>
             <td>Enabled</td>
-            <td><button>Disable</button></td>
-            <td><button>Enable</button></td>
+            <td><button class="action-button disable-button" onclick="changeRowStatus(this, 'disable')">Disable</button></td>
+            <td><button class="action-button enable-button" onclick="changeRowStatus(this, 'enable')">Enable</button></td>
         </tr>
         <tr>
             <td>38652-2119445-1</td>
             <td>Usman Baig</td>
             <td>Enabled</td>
-            <td><button>Disable</button></td>
-            <td><button>Enable</button></td>
+            <td><button class="action-button disable-button" onclick="changeRowStatus(this, 'disable')">Disable</button></td>
+            <td><button class="action-button enable-button" onclick="changeRowStatus(this, 'enable')">Enable</button></td>
         </tr>
         <tr>
             <td>38455-0958321-3</td>
             <td>Abdullah Khan</td>
             <td>Disabled</td>
-            <td><button>Disable</button></td>
-            <td><button>Enable</button></td>
+            <td><button class="action-button disable-button" onclick="changeRowStatus(this, 'disable')">Disable</button></td>
+            <td><button class="action-button enable-button" onclick="changeRowStatus(this, 'enable')">Enable</button></td>
         </tr>
     </tbody>
 </table>
+
+<script>
+    function changeRowStatus(button, action) {
+        var row = button.parentNode.parentNode;
+        if (action === 'disable') {
+            row.className = 'disabled-row';
+        } else if (action === 'enable') {
+            row.className = 'enabled-row';
+        }
+    }
+</script>
