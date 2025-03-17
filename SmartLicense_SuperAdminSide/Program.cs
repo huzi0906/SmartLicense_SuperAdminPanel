@@ -1,24 +1,47 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using SmartLicense_SuperAdminSide.Data;
+using SmartLicense_SuperAdminSide.Models;
+using SmartLicense_SuperAdminSide.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Configure MongoDB settings
+builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDbSettings"));
+builder.Services.AddSingleton<MongoDbContext>();
+builder.Services.AddSingleton<IAdminService, AdminService>();
+
+// Add authentication
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Home/Login";
+        options.LogoutPath = "/Home/Logout";
+    });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+else
 {
     app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();  // The default HSTS value is 30 days. You may want to change this for production scenarios.
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();  // Ensure static files are served, assuming you use this for CSS, images, etc.
+app.UseStaticFiles();
 
 app.UseRouting();
-app.UseAuthorization();  // Make sure authorization middleware is configured, even if not yet utilized.
 
-// Update default route to point to the Login action
+app.UseAuthentication(); // Add before UseAuthorization
+app.UseAuthorization();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Login}/{id?}");
